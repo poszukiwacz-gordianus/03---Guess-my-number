@@ -8,16 +8,16 @@ import { useGame } from "./_context/GameContext";
 export default function Page() {
   const { isGameOver, statusMessage } = useGame();
 
-  const backgroundColor = isGameOver
-    ? statusMessage.includes("won")
-      ? "bg-green-700"
-      : statusMessage.includes("was")
-      ? "bg-red-700"
-      : "bg-stone-900"
-    : "bg-stone-900";
+  const backgroundColor = statusMessage.includes("won")
+    ? "bg-green-700"
+    : "bg-red-700";
 
   return (
-    <div className={`${backgroundColor}  text-stone-100 h-screen`}>
+    <div
+      className={`${
+        isGameOver ? backgroundColor : "bg-stone-900"
+      }  text-stone-100 h-screen`}
+    >
       <GameHeader />
       <GameMain />
       <GameFooter />
